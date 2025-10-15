@@ -1,11 +1,13 @@
 <script setup>
-import NavBar from './components/NavBar.vue';
-import JobList from './views/JobLIst.vue';
+import Hero from "./components/Hero.vue";
+import NavBar from "./components/NavBar.vue";
+import JobList from "./views/JobLIst.vue";
 </script>
 
 <template>
   <NavBar />
-  <main class="max-w-4xl mx-auto mt-6 p-4">
+  <main class="mt-6">
+    <Hero />
     <JobList />
   </main>
 </template>

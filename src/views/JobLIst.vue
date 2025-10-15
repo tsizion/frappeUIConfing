@@ -1,22 +1,22 @@
 <script setup>
-import { reactive, ref } from 'vue';
-import { Input, Button, Dialog, Select } from 'frappe-ui';
-import JobCard from '../components/JobCard.vue';
+import { reactive, ref } from "vue";
+import { Input, Button, Dialog, Select } from "frappe-ui";
+import JobCard from "../components/JobCard.vue";
 
 const jobs = reactive([
-  { id: 1, title: 'Frontend Developer', company: 'Tech Co', type: 'Full-time' },
-  { id: 2, title: 'Backend Developer', company: 'Dev Ltd', type: 'Part-time' },
+  { id: 1, title: "Frontend Developer", company: "Tech Co", type: "Full-time" },
+  { id: 2, title: "Backend Developer", company: "Dev Ltd", type: "Part-time" },
 ]);
 
 const showDialog = ref(false);
 const form = reactive({
-  title: '',
-  company: '',
-  type: '',
+  title: "",
+  company: "",
+  type: "",
 });
 
 function openCreate() {
-  Object.assign(form, { title: '', company: '', type: '' });
+  Object.assign(form, { title: "", company: "", type: "" });
   showDialog.value = true;
 }
 
@@ -26,18 +26,18 @@ function saveJob() {
 }
 
 function updateJob(updatedJob) {
-  const index = jobs.findIndex(j => j.id === updatedJob.id);
+  const index = jobs.findIndex((j) => j.id === updatedJob.id);
   if (index > -1) jobs[index] = { ...updatedJob };
 }
 
 function deleteJob(id) {
-  const index = jobs.findIndex(j => j.id === id);
+  const index = jobs.findIndex((j) => j.id === id);
   if (index > -1) jobs.splice(index, 1);
 }
 </script>
 
 <template>
-  <div>
+  <div class="max-w-4xl mx-auto mt-6 p-4">
     <div class="flex justify-between items-center mb-4">
       <h1 class="text-2xl font-bold">Job Listings</h1>
       <Button label="Add Job" @click="openCreate" />
@@ -69,7 +69,9 @@ function deleteJob(id) {
       </template>
       <template #actions>
         <Button label="Save" @click="saveJob" />
-        <Button class="ml-2" variant="subtle" @click="showDialog = false">Cancel</Button>
+        <Button class="ml-2" variant="subtle" @click="showDialog = false"
+          >Cancel</Button
+        >
       </template>
     </Dialog>
   </div>
