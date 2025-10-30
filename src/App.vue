@@ -8,6 +8,7 @@ import JobList from "./views/JobLIst.vue";
   <NavBar />
   <main class="mt-6">
     <Hero />
-    <JobList />
+    <!-- <JobList /> -->
   </main>
+  <Footer />
 </template>

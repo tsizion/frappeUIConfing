@@ -1,3 +1,51 @@
+<script setup>
+import { ref, onMounted, onUnmounted } from "vue";
+import logo from "../assets/logo.png";
+import { FormControl, Button, Dialog } from "frappe-ui";
+
+const scrolled = ref(false);
+const menuOpen = ref(false);
+const jobseekersOpen = ref(false);
+const employersOpen = ref(false);
+const mobileJobseekersOpen = ref(false);
+const mobileEmployersOpen = ref(false);
+const dialogLogin = ref(false);
+const isLogin = ref(true);
+
+const jobseekersItems = ["Find Jobs", "Upload CV", "Career Tips"];
+const employersItems = ["Post Job", "Search CVs", "Hire Talent"];
+
+const loginForm = ref({ phone: "", password: "" });
+const signupForm = ref({
+  fullname: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+});
+
+const handleSubmit = (close) => {
+  if (isLogin.value) console.log("Logging in with:", loginForm.value);
+  else console.log("Creating account with:", signupForm.value);
+  close();
+};
+
+const handleScroll = () => {
+  scrolled.value = window.scrollY > 50;
+};
+
+const toggleDropdown = (menu) => {
+  if (menu === "jobseekers") {
+    jobseekersOpen.value = !jobseekersOpen.value;
+    employersOpen.value = false;
+  } else if (menu === "employers") {
+    employersOpen.value = !employersOpen.value;
+    jobseekersOpen.value = false;
+  }
+};
+
+onMounted(() => window.addEventListener("scroll", handleScroll));
+onUnmounted(() => window.removeEventListener("scroll", handleScroll));
+</script>
 <template>
   <nav
     class="fixed w-full top-0 left-0 z-50 bg-[#fafaff] border-b border-transparent transition-all duration-300"
@@ -312,52 +360,3 @@
     </template>
   </Dialog>
 </template>
-
-<script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-import logo from "../assets/logo.png";
-import { FormControl, Button, Dialog } from "frappe-ui";
-
-const scrolled = ref(false);
-const menuOpen = ref(false);
-const jobseekersOpen = ref(false);
-const employersOpen = ref(false);
-const mobileJobseekersOpen = ref(false);
-const mobileEmployersOpen = ref(false);
-const dialogLogin = ref(false);
-const isLogin = ref(true);
-
-const jobseekersItems = ["Find Jobs", "Upload CV", "Career Tips"];
-const employersItems = ["Post Job", "Search CVs", "Hire Talent"];
-
-const loginForm = ref({ phone: "", password: "" });
-const signupForm = ref({
-  fullname: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-});
-
-const handleSubmit = (close) => {
-  if (isLogin.value) console.log("Logging in with:", loginForm.value);
-  else console.log("Creating account with:", signupForm.value);
-  close();
-};
-
-const handleScroll = () => {
-  scrolled.value = window.scrollY > 50;
-};
-
-const toggleDropdown = (menu) => {
-  if (menu === "jobseekers") {
-    jobseekersOpen.value = !jobseekersOpen.value;
-    employersOpen.value = false;
-  } else if (menu === "employers") {
-    employersOpen.value = !employersOpen.value;
-    jobseekersOpen.value = false;
-  }
-};
-
-onMounted(() => window.addEventListener("scroll", handleScroll));
-onUnmounted(() => window.removeEventListener("scroll", handleScroll));
-</script>

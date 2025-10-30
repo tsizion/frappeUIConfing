@@ -9,6 +9,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppointmentDialog: typeof import('./src/components/AppointmentDialog.vue')['default']
+    Footer: typeof import('./src/components/Footer.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     Hero: typeof import('./src/components/Hero.vue')['default']
     JobCard: typeof import('./src/components/JobCard.vue')['default']
